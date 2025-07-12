@@ -11,7 +11,6 @@ class Kontak extends BaseController
 
   public function __construct()
   {
-    // Inisialisasi model di dalam constructor
     $this->kontakModel = new KontakModel();
   }
 
@@ -22,7 +21,7 @@ class Kontak extends BaseController
   {
     $data = [
       'title' => 'Daftar Kontak',
-      'kontak_list' => $this->kontakModel->findAll() // Mengambil semua data kontak
+      'kontak_list' => $this->kontakModel->findAll()
     ];
 
     return view('kontak/index', $data);
@@ -45,7 +44,6 @@ class Kontak extends BaseController
    */
   public function store()
   {
-    // Mengambil data dari form
     $data = [
       'name' => $this->request->getPost('name'),
       'email' => $this->request->getPost('email'),
@@ -53,10 +51,8 @@ class Kontak extends BaseController
       'address' => $this->request->getPost('address'),
     ];
 
-    // Menyimpan data ke database menggunakan model
     $this->kontakModel->save($data);
 
-    // Mengatur flashdata untuk notifikasi dan redirect
     session()->setFlashdata('pesan', 'Data kontak berhasil ditambahkan.');
     return redirect()->to('/');
   }
@@ -68,7 +64,7 @@ class Kontak extends BaseController
   {
     $data = [
       'title' => 'Edit Kontak',
-      'kontak' => $this->kontakModel->find($id) // Mengambil data kontak berdasarkan ID
+      'kontak' => $this->kontakModel->find($id)
     ];
 
     return view('kontak/edit', $data);
@@ -79,7 +75,6 @@ class Kontak extends BaseController
    */
   public function update($id)
   {
-    // Mengambil data dari form
     $data = [
       'name' => $this->request->getPost('name'),
       'email' => $this->request->getPost('email'),
@@ -87,7 +82,6 @@ class Kontak extends BaseController
       'address' => $this->request->getPost('address'),
     ];
 
-    // Memperbarui data di database
     $this->kontakModel->update($id, $data);
 
     session()->setFlashdata('pesan', 'Data kontak berhasil diperbarui.');
