@@ -35,7 +35,7 @@
             <form action="/delete/<?= $k['id']; ?>" method="post" class="d-inline">
               <?= csrf_field(); ?>
               <input type="hidden" name="_method" value="DELETE">
-              <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</button>
+              <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data <?= $k['name']; ?>?');">Hapus</button>
             </form>
           </td>
         </tr>
