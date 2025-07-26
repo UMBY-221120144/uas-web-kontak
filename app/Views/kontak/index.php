@@ -2,8 +2,6 @@
 
 <?= $this->section('content'); ?>
 
-<a href="/create" class="btn btn-primary mb-3">Tambah Kontak</a>
-
 <?php if (session()->getFlashdata('pesan')) : ?>
   <div class="alert alert-success" role="alert">
     <?= session()->getFlashdata('pesan'); ?>
